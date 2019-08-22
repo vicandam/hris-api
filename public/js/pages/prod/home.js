@@ -355,7 +355,7 @@ new Vue({
                 title = " | " + title + ' | ' + subtab;
             }
 
-            document.title = 'Vic Datu Andam | ' + title;
+            document.title = 'Vic Datu Andam ' + title;
 
             history.replaceState({}, '', url);
         },
@@ -508,15 +508,6 @@ new Vue({
             } else {
                 url = this.url + '/api/post/store';
             }
-
-            //
-            // if(section == 'video') {
-            //     // this.post.type = 'video';
-            //     // this.post.url = this.post.video;
-            //     // this.post.video = ;
-            // }
-            //
-
 
             this.post.action = action;
             this.post.section = section;

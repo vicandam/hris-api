@@ -60,7 +60,7 @@
 
 
                     @foreach($categories as $category)
-                        <option  value="{{ $category }}" >{{ $category }}</option>
+                        <option  value="{{ $category->id }}" >{{ $category->name }}</option>
                     @endforeach
 
                 </select>

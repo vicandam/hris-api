@@ -32,13 +32,12 @@ class HomeController extends Controller
         $input = ($request->all() == null ?  json_decode($request->getContent(), true) : $request->all() );
 
         if(! $page) {
-            $page = 'portfolio';
+            $page = 'feed-stackoverflow';
         }
 
         // contact categories
         $categories = Category::all();
 
         return view('home', compact('page', 'categories'));
-
     }
 }

@@ -82,7 +82,7 @@
                                     <img src="img/logo/vic-2.jpg" class="header-logo" /> &nbsp;
                                 </div>
 
-                                <p style="font-family: Roboto; font-style: italic; font-weight: normal"> VicMedia</p>
+                                <p style="font-family: Roboto; font-style: italic; font-weight: normal"> Vic'sMedia</p>
 
                             </div>
                         </div>

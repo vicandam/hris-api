@@ -63,15 +63,16 @@
         <div class="row no-margin-top" >
             <div class="col-md-12">
                 <ul class="nav nav-tabs tab-container-ul" id="myTab" role="tablist">
-{{--                    <li class="nav-item">--}}
-{{--                        <a class="nav-link {{ ($page == 'feed-stackoverflow' || $page == 'feed-github-repository') ? 'active' : null }}" id="feed-tab" data-toggle="tab" href="#feed" role="tab" aria-controls="feed" aria-selected="true" @click="navigateTab('feed', 'stackoverflow')" >--}}
-{{--                            FEED--}}
-{{--                            <br>--}}
-{{--                            <small>--}}
-{{--                                Communities activity--}}
-{{--                            </small>--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
+                    <li class="nav-item">
+                        <a class="nav-link {{ ($page == 'feed-stackoverflow' || $page == 'feed-github-repository') ? 'active' : null }}" id="feed-tab" data-toggle="tab" href="#feed" role="tab" aria-controls="feed" aria-selected="true" @click="navigateTab('feed', 'stackoverflow')" >
+                            FEED
+                            <br>
+                            <small>
+                                Communities activity
+                            </small>
+                        </a>
+                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link {{ ($page == 'portfolio') ? 'active' : null }}" id="portfolio-tab" data-toggle="tab" href="#portfolio" role="tab" aria-controls="portfolio" aria-selected="false" @click="navigateTab('portfolio')" >
                             PORTFOLIO
@@ -80,6 +81,7 @@
                                 Checkout my products
                             </small>
                         </a>
+                    </li>
 
                     <li class="nav-item">
                         <a class="nav-link {{ ($page == 'history') ? 'active' : null }} " id="history-tab" data-toggle="tab" href="#history" role="tab" aria-controls="history" aria-selected="false" @click="navigateTab('history')" >
@@ -129,7 +131,7 @@
                 <div class="tab-content" id="myTabContent">
 
                     {{--FEED--}}
-{{--                    @include('home.tab.feed')--}}
+                    @include('home.tab.feed')
 
                     {{--PORTFOLIO--}}
                     @include('home.tab.portfolio')
