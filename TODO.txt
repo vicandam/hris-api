@@ -1,0 +1,66 @@
+November 23
+    Testing
+November 30
+    Launch
+    Invite usrs to use the site
+November 19
+    Finish deadline
+Happy Life
+  Nov 8
+  Nov 9 -  Nov 10
+ Nov 11
+ Nov 12
+ Nov 13
+     - Format the design when posting,
+     - Add share functionality to facebook
+     - Add facebook title and tag title
+
+
+
+
+
+
+     - Add smily in the title and description when the user typing :) ;) :p ;p XD
+     - Fix other video of youtube posting is not working
+     - create privacy poliy, about and terms and condition
+     - Setup privacy policy for facebook login to be live
+     - Setup the site to live site as your dev site
+     - Enable facebook to production
+     - Create the about, privacy policy, purpose and rules.
+     - Change the color of the about of the header of the profile pic in the post
+ISSUE
+
+ 1. Not working
+        https://www.youtube.com/watch?v=2Vv-BfVoq4g&index=4&list=RDMMb8eApABFWKE
+        https://www.youtube.com/watch?v=XjwZAa2EjKA&feature=youtu.be&list=RDMMb8eApABFWKE
+    Make sure, shared url should work from
+
+ - add functionality touched and create icon for it ( a verry simple functionality ) can be add later.
+
+Coming soon
+  - Update of text can edit with photo and video
+  - Click touch and be able to count the touch response
+  - Redirect change to popup
+  - Add design for text post
+  - implement the vimeo video
+  - Make the color signature as red find the best color
+  - allow youtube to post the share url or main url
+  - When scroll down the left and right sidebar should go together
+  - Options rating: Touching, Happy, Emotional, Inspired, Lovable, Cute
+  - save, follow, share, inspired / save, report post/block
+  - Person can also choose public or private posts
+  - Login page should be a popup
+  - Create registration page and forgot password
+  - Change type of edit that will be able to change the font size
+
+ POSSIBLE FUNCTIONALITY TO BE ADDED:
+
+ 1. Need when someone hit the view more button the updated at date should be updated
+ and updated at is the sorting of the result of the posts
+
+
+
+
+
+Dont work
+https://www.youtube.com/watch?time_continue=64&v=NZgf1VsbsO4
