@@ -287,7 +287,7 @@ new Vue({
                 title = " | " + title + ' | ' + subtab;
             }
 
-            document.title = 'Vic Datu Andam' + title;
+            document.title = 'Vic Datu Andam | ' + title;
 
             history.replaceState({}, '', url);
 
