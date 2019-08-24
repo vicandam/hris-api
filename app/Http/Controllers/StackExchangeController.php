@@ -16,10 +16,9 @@ class StackExchangeController extends Controller
 
         // @todo this will become a dynamic data so that any user can enter their stack overflow id
 
+        $stack_overflow_user_id = (!empty($input['stack_overflow_user_id'])) ? $input['stack_overflow_user_id'] : 16060 ;
 
-        $stack_overflow_user_id = (!empty($input['stack_overflow_user_id'])) ? $input['stack_overflow_user_id'] : 4551227 ;
-
-        $stack_overflow_api_key = (!empty($input['stack_overflow_api_key'])) ? $input['stack_overflow_api_key'] : 'ABzCprcQclSa7Jcu5fFuKw((' ;
+        $stack_overflow_api_key = (!empty($input['stack_overflow_api_key'])) ? $input['stack_overflow_api_key'] : '57lzag))oeUJa8zO11n9Ew((' ;
 
         // this is for the limit and total results
         $limit = $input['limit'];

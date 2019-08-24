@@ -17,9 +17,9 @@ class GitController extends Controller
 
 
 
-        $client_id = (!empty($input['client_id'])) ? $input['client_id'] : 'Iv1.89ce5c2d0247d74d';
+        $client_id = (!empty($input['client_id'])) ? $input['client_id'] : 'aad66ee77d678c06c696';
 
-        $client_secret = (!empty($input['client_secret'])) ? $input['client_secret'] : '0bb698b88fa3cc690f95d6b714be0f033e5b0240';
+        $client_secret = (!empty($input['client_secret'])) ? $input['client_secret'] : 'fcd46c01474025034dac6048804a144472e31c2b';
 
         // this is for the limit and total results
         $limit = $input['limit'];
@@ -30,7 +30,7 @@ class GitController extends Controller
 
         $client = new GuzzleHttp\Client();
 
-        $apiUrl = "https://api.github.com/users/jesus143/repos?order=desc&page=$offset&per_page=$limitNow&client_id=$client_id&client_secret=$client_secret";
+        $apiUrl = "https://api.github.com/users/totski90/repos?order=desc&page=$offset&per_page=$limitNow&client_id=$client_id&client_secret=$client_secret";
 
         $res = $client->get($apiUrl);
 
