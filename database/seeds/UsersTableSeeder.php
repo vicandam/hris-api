@@ -5,7 +5,7 @@ use App\User;
 
 
 use Faker\Factory as Faker;
-
+use Illuminate\Support\Facades\DB;
 
 
 class UsersTableSeeder extends Seeder
@@ -17,6 +17,9 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0');
+        DB::table('users')->truncate();
+
         factory(User::class, 1)->create([
             'email' => 'vicajobs@gmail.com',
             'name' => 'Vic Datu Andam',

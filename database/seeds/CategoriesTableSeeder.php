@@ -12,39 +12,12 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0');
+        DB::table('categories')->truncate();
+
         $categories = [
             [
                 'name' => 'Select category'
-            ],
-            [
-                'name' => 'Web Development'
-            ],
-            [
-                'name' => 'Web Services'
-            ],
-            [
-                'name' => 'Wordpress'
-            ],
-            [
-                'name' => 'Wordpress Fix'
-            ],
-            [
-                'name' => 'Wordpress plugin development'
-            ],
-            [
-                'name' => 'Wordpress plugin customization'
-            ],
-            [
-                'name' => 'Wordpress theme customization'
-            ],
-            [
-                'name' => 'Wordpress theme development'
-            ],
-            [
-                'name' => 'Wordpress Development'
-            ],
-            [
-                'name' => 'Wordpress Maintenance'
             ],
             [
                 'name' => 'Laravel'
@@ -66,9 +39,6 @@ class CategoriesTableSeeder extends Seeder
             ],
             [
                 'name' => 'Laravel Development'
-            ],
-            [
-                'name' => 'Shopify customization'
             ],
             [
                 'name' => 'PHP development'
