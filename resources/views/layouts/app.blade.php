@@ -79,7 +79,7 @@
                         <div class="pull-left logo-container">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <img src="img/logo/vic-2.jpg" class="header-logo" /> &nbsp;
+                                    <a href="{{ route('home') }}"><img src="img/logo/vic-2.jpg" class="header-logo" /></a>
                                 </div>
 
                                 <div class="col-md-4 pl-2">
