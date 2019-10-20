@@ -81,11 +81,6 @@
                                 <div class="col-md-4">
                                     <a href="{{ route('home') }}"><img src="img/logo/vic-2.jpg" class="header-logo" /></a>
                                 </div>
-
-                                <div class="col-md-4 pl-2">
-                                    <span style="font-family: Roboto; font-style: italic; font-weight: normal">Ic</span>
-                                </div>
-
                             </div>
                         </div>
 
@@ -137,6 +132,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 ">
+                        <div class="font-italic" style="font-size: x-small">
+                            <p class="pull-center-text">"I can do all this through him who gives me strength." <br>Philippians 4:13</p>
+                        </div>
                         <p  class="pull-center-text"   >{{ trans('paragraph.footer_copy_right_message') }}</p>
                     </div>
                 </div>
