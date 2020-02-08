@@ -116,6 +116,13 @@
     <div id="home" class="slider-area">
         <div class="bd-example">
             <div id="carouselOne" class="carousel slide" data-ride="carousel">
+                <div class="alert alert-success" role="alert">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <h4 class="alert-heading">Success!</h4>
+                    <p>You inquiry has been successfully submitted.</p>
+                    <hr>
+                    <p class="mb-0">We'll send you an email regarding to your inquiries. Please allow us to review within 2 - 3 days.</p>
+                </div>
                 <ol class="carousel-indicators" style="display: none">
                     <li data-target="#carouselOne" data-slide-to="0" class="active"></li>
                     <li data-target="#carouselOne" data-slide-to="1"></li>
@@ -545,22 +552,23 @@
 <section id="call-action" class="call-action-area">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-lg-5">
-                <div class="call-action-content mt-45">
-                    <h3 class="action-title">Get latest updates!</h3>
-                    <p class="text">We never spam your email</p>
-                </div> <!-- call action content -->
-            </div>
-            <div class="col-lg-7">
-                <div class="call-action-form mt-50">
-                    <form action="#">
-                        <input type="text" placeholder="Enter your email">
-                        <div class="action-btn rounded-buttons">
-                            <button class="main-btn rounded-three">subscribe</button>
-                        </div>
-                    </form>
-                </div> <!-- call action form -->
-            </div>
+                <div class="col-lg-5">
+                    <div class="call-action-content mt-45">
+                        <h3 class="action-title">Get latest updates!</h3>
+                        <p class="text">We never spam your email</p>
+                    </div> <!-- call action content -->
+                </div>
+                <div class="col-lg-7">
+                    <div class="call-action-form mt-50">
+                        <form action="#">
+                            <input type="text" placeholder="Enter your email">
+                            <div class="action-btn rounded-buttons">
+                                <button class="main-btn rounded-three">subscribe</button>
+                            </div>
+                        </form>
+                    </div> <!-- call action form -->
+                </div>
+
         </div> <!-- row -->
     </div> <!-- container -->
 </section>
@@ -716,7 +724,8 @@
             </div>
             <div class="col-lg-6">
                 <div class="contact-form form-style-one mt-35 wow fadeIn" data-wow-duration="1.5s" data-wow-delay="0.5s">
-                    <form  id="contact-form" action="assets/contact.php" method="post">
+                    <form  id="contact-form" action="/inquiries" method="post" enctype="multipart/form-data">
+                        @csrf
                         <div class="form-input mt-15">
                             <label>Name</label>
                             <div class="input-items default">
@@ -734,7 +743,7 @@
                         <div class="form-input mt-15">
                             <label>Massage</label>
                             <div class="input-items default">
-                                <textarea placeholder="Massage" name="massage"></textarea>
+                                <textarea placeholder="Massage" name="message"></textarea>
                                 <i class="lni-pencil-alt"></i>
                             </div>
                         </div> <!-- form input -->

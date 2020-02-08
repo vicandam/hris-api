@@ -3,6 +3,9 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('index');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/contact', 'InquiriesController@contact')->name('contact');
+
+Route::resource('inquiries', 'InquiriesController');
 
 Route::get('/{page?}', 'HomeController@index')->name('feed-stackoverflow');
 
