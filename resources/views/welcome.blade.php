@@ -114,15 +114,18 @@
     </div> <!-- navbar area -->
 
     <div id="home" class="slider-area">
+        @if(session('flash_message'))
+            <div class="alert alert-success" role="alert">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <h4 class="alert-heading">Success!</h4>
+                <p>You inquiry has been successfully submitted.</p>
+                <hr>
+                <p class="mb-0">We'll contact you as soon as possible.</p>
+            </div>
+        @endif
+
         <div class="bd-example">
             <div id="carouselOne" class="carousel slide" data-ride="carousel">
-                <div class="alert alert-success" role="alert">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    <h4 class="alert-heading">Success!</h4>
-                    <p>You inquiry has been successfully submitted.</p>
-                    <hr>
-                    <p class="mb-0">We'll send you an email regarding to your inquiries. Please allow us to review within 2 - 3 days.</p>
-                </div>
                 <ol class="carousel-indicators" style="display: none">
                     <li data-target="#carouselOne" data-slide-to="0" class="active"></li>
                     <li data-target="#carouselOne" data-slide-to="1"></li>
