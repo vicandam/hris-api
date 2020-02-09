@@ -59,7 +59,7 @@ class InquiriesController extends Controller
             $client->message = $request->message;
 
             $client->save();
-            
+            dd('mail'. env('MAIL_PASSWORD'));
             Mail::to(env('MAIL_USERNAME'))->send(new ClentsInquiryNotification($client));
         });
 
