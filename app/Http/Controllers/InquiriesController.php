@@ -60,7 +60,7 @@ class InquiriesController extends Controller
 
             $client->save();
 
-            Mail::to(env('mail_admin'))->send(new ClentsInquiryNotification($client));
+            Mail::to('vicajobs@gmail.com')->send(new ClentsInquiryNotification($client));
         });
 
         Session::flash('flash_message', 'Your Inquiry has been submitted successfully.');
