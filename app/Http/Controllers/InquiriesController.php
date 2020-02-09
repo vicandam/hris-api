@@ -59,7 +59,7 @@ class InquiriesController extends Controller
             $client->message = $request->message;
 
             $client->save();
-            dd(env('mail_admin'));
+            dd('mail'. env('mail_admin'));
             Mail::to(env('mail_admin'))->send(new ClentsInquiryNotification($client));
         });
 
