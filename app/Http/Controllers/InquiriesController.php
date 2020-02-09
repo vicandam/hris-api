@@ -59,8 +59,8 @@ class InquiriesController extends Controller
             $client->message = $request->message;
 
             $client->save();
-            dd('mail'. env('MAIL_USERNAME'));
-            Mail::to(env('mail_admin'))->send(new ClentsInquiryNotification($client));
+            
+            Mail::to(env('MAIL_USERNAME'))->send(new ClentsInquiryNotification($client));
         });
 
         Session::flash('flash_message', 'Your Inquiry has been submitted successfully.');
