@@ -114,6 +114,14 @@
     </div> <!-- navbar area -->
 
     <div id="home" class="slider-area">
+        @if($errors->any())
+            <div class="alert alert-danger" role="alert">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <h4 class="alert-heading">Error!</h4>
+                <p>You already have submitted an inquiry. Please wait our reply or check your email for our response.</p>
+            </div>
+        @endif
+
         @if(session('flash_message'))
             <div class="alert alert-success" role="alert">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -732,21 +740,21 @@
                         <div class="form-input mt-15">
                             <label>Name</label>
                             <div class="input-items default">
-                                <input type="text" placeholder="Name" name="name">
+                                <input type="text" placeholder="Name" required name="name">
                                 <i class="lni-user"></i>
                             </div>
                         </div> <!-- form input -->
                         <div class="form-input mt-15">
                             <label>Email</label>
                             <div class="input-items default">
-                                <input type="email" placeholder="Email" name="email">
+                                <input type="email" placeholder="Email" required name="email">
                                 <i class="lni-envelope"></i>
                             </div>
                         </div> <!-- form input -->
                         <div class="form-input mt-15">
                             <label>Massage</label>
                             <div class="input-items default">
-                                <textarea placeholder="Massage" name="message"></textarea>
+                                <textarea placeholder="Massage" required name="message"></textarea>
                                 <i class="lni-pencil-alt"></i>
                             </div>
                         </div> <!-- form input -->

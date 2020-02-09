@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ClientStoreRequest;
+use App\Inquiries;
 use App\Inuquiries;
 use App\Mail\ClentsInquiryNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 class InquiriesController extends Controller
 {
@@ -39,21 +43,38 @@ class InquiriesController extends Controller
      */
     public function store(Request $request)
     {
-        $client = new Inuquiries();
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|unique:inquiries'
+        ]);
 
-        DB::table(function () use ($client, $request) {
+        if($validator->fails()) {
+            return redirect()->back()->withErrors($validator);
+        }
+
+        $client = new Inquiries();
+
+        DB::transaction(function () use ($client, $request) {
             $client->name    = $request->name;
             $client->email   = $request->email;
             $client->message = $request->message;
 
             $client->save();
 
-            Mail::to(env('MAIL_ADMIN'))->send(new ClentsInquiryNotification($client));
+            Mail::to(env('mail_admin'))->send(new ClentsInquiryNotification($client));
         });
 
         Session::flash('flash_message', 'Your Inquiry has been submitted successfully.');
 
-        return redirect()->back();
+        $result = [
+            'data' => $client,
+            'message' => 'Success'
+        ];
+
+        if (isset($request->testing)) {
+            return response()->json($result, 200, [], JSON_PRETTY_PRINT);
+        } else {
+            return redirect()->back();
+        }
     }
 
     /**
