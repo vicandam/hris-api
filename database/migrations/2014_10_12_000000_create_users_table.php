@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('position', 150)->nullable();
             $table->string('history_title', 150)->nullable();
             $table->text('history_description')->nullable();
-            $table->string('contact_email', 100);
+            $table->string('contact_email', 100)->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

@@ -8,13 +8,15 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Post;
 use File;
 use Illuminate\Support\Facades\Input;
+use Laravel\Passport\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
 use Storage;
 use Validator;
 use App\Interaction;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, HasApiTokens, HasRoles;
 
     public $request_user_id = 0;
     /**
@@ -104,6 +106,11 @@ class User extends Authenticatable
                 File::deleteDirectory(dirname($this->photo));
             }
         }
+    }
+
+    public function employee()
+    {
+        return $this->hasMany('App\Employee');
     }
 //
 //    public function getAboutAttribute($about)
