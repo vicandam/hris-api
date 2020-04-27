@@ -26,17 +26,17 @@ abstract class TestCase extends BaseTestCase
         // Init setup
         parent::setUp();
 
-        $this->auth = factory(User::class, 1)->create([
-            'email' => 'mrjesuserwinsuarez@gmail.com',
-            'name' => 'Vic Datu Andam',
-            'slug' => 'vic-datu-andam'
-        ])->first();
+//        $this->auth = factory(User::class, 1)->create([
+//            'email' => 'mrjesuserwinsuarez@gmail.com',
+//            'name' => 'Vic Datu Andam',
+//            'slug' => 'vic-datu-andam'
+//        ])->first();
 
-        $this->actingAs($this->auth);
+//        $this->actingAs($this->auth);
 
         // create users
-        $this->users = factory(User::class, 20)->create();
-        $this->messages = factory(Message::class, 30)->create();
+//        $this->users = factory(User::class, 20)->create();
+//        $this->messages = factory(Message::class, 30)->create();
 
 //        // Auth user
 //        $this->auth = User::inRandomOrder()->get()->first();

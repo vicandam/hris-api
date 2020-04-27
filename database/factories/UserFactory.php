@@ -13,11 +13,12 @@ use Faker\Generator as Faker;
 |
 */
 
+
 $factory->define(App\User::class, function (Faker $faker) {
     $name = $faker->name;
 
     return [
-        'name' => $name,
+        'name' => 'Test',
         'slug' => str_slug($name),
         'email' => $faker->unique()->safeEmail,
         'about' => $faker->paragraph,

@@ -7,6 +7,7 @@ use App\Role;
 use App\User;
 use Laravel\Passport\Passport;
 use Tests\TestCase;
+use Illuminate\Support\Facades\DB;
 
 class TestFactory extends TestCase
 {
@@ -32,7 +33,6 @@ class TestFactory extends TestCase
             $this->createInstance('users', $this->users);
         } else {
             $this->user = Passport::actingAs(factory(User::class)->create($attr));
-
             $this->createInstance('user', $this->user);
         }
 

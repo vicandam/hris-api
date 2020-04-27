@@ -2,6 +2,8 @@
 
 namespace Tests\Feature;
 
+use App\Employee;
+use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\Library\TestFactory;
@@ -28,8 +30,8 @@ class AttendanceTest extends TestCase
     {
         $this->factory
             ->createUser()
-            ->createEmployee()
-            ->signIn($this);
+            ->signIn($this)
+            ->createEmployee(22);
 
         $attribute = [
             'status' => 'in'

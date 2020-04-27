@@ -2,6 +2,8 @@
 
 namespace Tests\Feature;
 
+use App\Employee;
+use App\User;
 use Tests\Library\TestFactory;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -352,7 +354,7 @@ class UserTest extends TestCase
     public function test_retrieve_users()
     {
         $this->factory
-            ->createUser(5);
+            ->createUser();
 
         $attributes = [
             'limit' => 5,
@@ -364,7 +366,7 @@ class UserTest extends TestCase
 
         $data = $response->getOriginalContent()['data']['users'];
 
-        $this->assertEquals(5, $data['users']->count());
+        $this->assertEquals(22, $data['users']->count());
 
         $response->assertOk();
     }
@@ -391,7 +393,7 @@ class UserTest extends TestCase
             ->signIn($this);
 
         $attributes = [
-            'current_password' => 'password',
+            'current_password' => 'secret',
             'new_password'     => 'new_password',
             'confirm_password' => 'new_password'
         ];
