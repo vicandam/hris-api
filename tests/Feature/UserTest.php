@@ -3,216 +3,43 @@
 namespace Tests\Feature;
 
 use App\Employee;
-use App\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Artisan;
 use Tests\Library\TestFactory;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Artisan;
 
-/**
- * ./vendor/bin/phpunit --filter UserTest tests/Feature/UserTest.php
- * Class UserTest
- * @package Tests\Feature
- */
 class UserTest extends TestCase
 {
-    function __construct($name = null, array $data = [], $dataName = '')
+    use RefreshDatabase;
+
+    protected $factory;
+
+    public function __construct($name = null, array $data = [], $dataName = '')
     {
         parent::__construct($name, $data, $dataName);
+
         $this->factory = new TestFactory();
     }
 
-    /**
-     * @test
-     * ./vendor/bin/phpunit --filter test_visit_home tests/Feature/UserTest.php
-     */
-    public function test_visit_home() {
-        // load url
-        $response =  $this->get('/');
+    /**Skip for now
+    public function test_send_sms()
+    {
+        $this->factory
+            ->createUser()
+            ->signIn($this);
 
-        // check if the status is 200
-        $response->assertStatus(200);
-    }
-    /*
-     * @test
-     * ./vendor/bin/phpunit --filter test_load_user_information tests/Feature/UserTest.php
-     */
-    public function test_load_user_information() {
-        // load user info via url
-          $response =  $this->post('api/user/profile/load');
-
-        // check if found a result or not and it should be found
-        $original = $response->original;
-
-        $id = $original['data']['user']['id'];
-
-        // check status if success
-        $this->assertTrue($id > 0);
-
-        // check status if success
-        $response->assertStatus(200);
-    }
-    /*
-     * @test
-     * ./vendor/bin/phpunit --filter test_guest_load_user_information tests/Feature/UserTest.php
-     */
-    public function test_guest_load_user_information() {
-        // logout current user
-        auth()->logout();
-
-        // load user info via url
-          $response =  $this->post('api/user/profile/load');
-
-        // check if found a result or not and it should be found
-        $original = $response->original;
-
-        $id = $original['data']['user']['id'];
-
-        // check status if success
-        $this->assertTrue($id > 0);
-
-        // check status if success
-        $response->assertStatus(200);
-    }
-    /*
-     * @test
-     * ./vendor/bin/phpunit --filter test_guest_load_user_information_default_is_for_jesus tests/Feature/UserTest.php
-     */
-    public function test_guest_load_user_information_default_is_for_jesus() {
-        // logout current user
-        auth()->logout();
-
-        // load user info via url
-          $response =  $this->post('api/user/profile/load');
-
-        // check if found a result or not and it should be found
-        $original = $response->original;
-
-        $email = $original['data']['user']['email'];
-
-        // check status if success
-        $this->assertTrue($email == 'mrjesuserwinsuarez@gmail.com');
-
-        // check status if success
-        $response->assertStatus(200);
-    }
-    /*
-     * @test
-     * ./vendor/bin/phpunit --filter test_update_about tests/Feature/UserTest.php
-     */
-    public function test_update_about() {
-        $data =  [
-            'name' => 'Vic Datu Andam',
-            'position' => 'CEO, Founder and a creator / Project Manager / Web Developer',
-            'about' => 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like y web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometime',
-            'section' => 'basic information'
+        $attributes = [
+            'number' => '09161010994',
+            'message' => 'The quick brown fox jumps over the lazy dog.'
         ];
 
-        // load user info via url
-        $response =  $this->post('api/user/profile/update', $data);
+        $response = $this->post('api/send-sms', $attributes);
 
-       // check status if success
-        $response->assertStatus(200);
+        $response->assertOk();
     }
-    /*
-    * @test
-    * ./vendor/bin/phpunit --filter test_upload_change_profile_pic tests/Feature/UserTest.php
-    */
-    public function test_upload_change_profile_pic() {
-            $data = [
-                'photo' => UploadedFile::fake()->image('avatar.jpg'),
-                'section' => 'profile photo'
-            ];
+     * */
 
-            // Create fake profile
-            Storage::fake('profile');
-
-            // Initialized the auth user
-            $auth = auth()->user();
-
-            // Do the upload via http request
-            $response = $this->json('POST', 'api/user/profile/update/photo', $data);
-
-            // Assert the file was stored...
-            Storage::disk('profile')->assertExists($auth->id . '/' . 'avatar.jpg');
-
-            // Assert a file does not exist...
-            Storage::disk('profile')->assertMissing($auth->id . '/' . 'missing.jpg');
-
-            $response->assertStatus(200);
-    }
-    /*
-  * @test
-  * ./vendor/bin/phpunit --filter test_delete_profile_pic tests/Feature/UserTest.php
-  */
-    public function test_delete_profile_pic() {
-        $data = [
-            'photo' => UploadedFile::fake()->image('avatar.jpg'),
-            'section' => 'profile photo'
-        ];
-
-        // Create fake profile
-        Storage::fake('profile');
-
-        // Initialized the auth user
-        $auth = auth()->user();
-
-        // Do the upload via http request
-        $response = $this->json('POST', 'api/user/profile/update/photo', $data);
-
-        // delete now
-        $status1 = Storage::disk('profile')->delete($auth->id . '/' . 'avatar.jpg');
-
-        // not able to delete
-
-        $status2 = Storage::disk('profile')->delete($auth->id . '/' . 'avatar1.jpg');
-
-        // check if successdully deleted
-        $this->assertTrue($status1);
-
-        // check if failed to delete
-        $this->assertTrue($status2 == false);
-
-        // status is
-        $response->assertStatus(200);
-    }
-    /*
-    * @test
-    * ./vendor/bin/phpunit --filter test_update_history tests/Feature/UserTest.php
-    */
-    public function test_update_history() {
-        $data =  [
-            'history_title' => 'My History',
-            'history_description' => 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like y web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometime',
-            'section' => 'history'
-        ];
-
-        // load user info via url
-        $response =  $this->post('api/user/profile/update', $data);
-
-        // check status if success
-        $response->assertStatus(200);
-    }
-    /*
-    * @test
-    * ./vendor/bin/phpunit --filter test_update_contact_email tests/Feature/UserTest.php
-    */
-    public function test_update_contact_email() {
-        $data =  [
-            'contact_email' => 'contactme@jesus.com',
-            'section' => 'contact us'
-        ];
-
-        // load user info via url
-        $response =  $this->post('api/user/profile/update', $data);
-
-        // check status if success
-        $response->assertStatus(200);
-    }
-    /** API test */
     public function test_create_user()
     {
         Artisan::call('passport:install');
@@ -237,6 +64,7 @@ class UserTest extends TestCase
 
         $response->assertStatus(200);
     }
+
     public function test_logged_in_user_update_their_profile()
     {
         Artisan::call('passport:install');
@@ -354,19 +182,19 @@ class UserTest extends TestCase
     public function test_retrieve_users()
     {
         $this->factory
-            ->createUser();
+            ->createUser(5);
 
         $attributes = [
-            'limit' => 5,
-            'page' => 1,
-            'sort' => 'desc'
+          'limit' => 5,
+          'page' => 1,
+          'sort' => 'desc'
         ];
 
         $response = $this->get('api/users?' . http_build_query($attributes));
 
         $data = $response->getOriginalContent()['data']['users'];
 
-        $this->assertEquals(22, $data['users']->count());
+        $this->assertEquals(5, $data['users']->count());
 
         $response->assertOk();
     }
@@ -393,7 +221,7 @@ class UserTest extends TestCase
             ->signIn($this);
 
         $attributes = [
-            'current_password' => 'secret',
+            'current_password' => 'password',
             'new_password'     => 'new_password',
             'confirm_password' => 'new_password'
         ];
