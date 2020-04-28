@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    ZMT Backend
+                    Attendance backend
                 </div>
 
                 <div class="links">
