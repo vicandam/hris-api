@@ -26,4 +26,4 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::get('auth-attendance', 'Api\AttendanceController@getAuthAttendance')->name('auth.attendance');
 });
 
-Route::post('login', array('middleware' => 'cors', 'uses' => 'Api\AuthController@login'))->name('user.login');
+Route::post('login', 'Api\AuthController@login')->name('user.login');
