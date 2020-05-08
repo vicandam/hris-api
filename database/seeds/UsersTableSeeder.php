@@ -15,6 +15,15 @@ class UsersTableSeeder extends Seeder
         DB::statement('SET FOREIGN_KEY_CHECKS=0');
         DB::table('users')->truncate();
 
-        factory(User::class, 5)->create();
+        $users = factory(User::class, 5)->create();
+
+        foreach ($users as $key => $user) {
+
+            if ($key > 3) {
+                $user->assignRole('admin');
+            } else {
+                $user->assignRole('employee');
+            }
+        }
     }
 }

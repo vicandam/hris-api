@@ -8,6 +8,6 @@ use App\Attendance;
 $factory->define(Attendance::class, function (Faker $faker) {
     return [
         'status' => $faker->randomElement(array('in', 'out')),
-        'employee_id' => 1
+        'user_id' => 1
     ];
 });

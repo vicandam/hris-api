@@ -23,6 +23,13 @@ class TestFactory extends TestCase
         return $this;
     }
 
+    public function asAdmin()
+    {
+        $this->user->assignRole('admin');
+
+        return $this;
+    }
+
     public function createUser($total=1, $attr=[])
     {
         if ($total > 1) {

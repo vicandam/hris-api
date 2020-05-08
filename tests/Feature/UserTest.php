@@ -135,12 +135,14 @@ class UserTest extends TestCase
         Artisan::call('passport:install');
 
         $this->factory
+            ->generateRolesAndPermissions()
             ->createUser(1,
                 [
                     'name' => 'jane doe',
                     'email' => 'janedoe@gmail.com',
                     'password' => bcrypt('password')
-                ]);
+                ])
+            ->asAdmin();
 
         $attributes = [
             'email' => 'janedoe@gmail.com',
@@ -151,7 +153,7 @@ class UserTest extends TestCase
 
         $data = $response->getOriginalContent();
 
-        $this->assertNotEmpty($data['access_token']);
+        $this->assertNotEmpty($data['accessToken']);
 
         $this->assertEquals($data['message'], 'login successful');
     }
@@ -160,12 +162,14 @@ class UserTest extends TestCase
         Artisan::call('passport:install');
 
         $this->factory
+            ->generateRolesAndPermissions()
             ->createUser(1,
                 [
                     'name' => 'jane doe',
                     'email' => 'janedoe@gmail.com',
                     'password' => bcrypt('password')
-                ]);
+                ])
+            ->asAdmin();
 
         $attributes = [
             'email' => 'janedoe@gmail.com',

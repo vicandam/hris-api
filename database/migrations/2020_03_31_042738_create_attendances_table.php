@@ -17,7 +17,7 @@ class CreateAttendancesTable extends Migration
             $table->increments('id');
 
             $table->enum('status', ['in', 'out'])->nullable();
-            $table->unsignedBigInteger('employee_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();
         });
     }

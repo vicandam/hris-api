@@ -46,8 +46,8 @@ class AttendanceRepository extends BaseRepository
     {
         $attendance = new Attendance();
 
-        $attendance->status = $request->status;
-        $attendance->employee_id = Employee::where('id', auth()->id())->first()->id;
+        $attendance->status  = $request->status;
+        $attendance->user_id = auth()->id();
 
         $attendance->save();
 

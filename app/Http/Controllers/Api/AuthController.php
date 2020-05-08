@@ -21,10 +21,16 @@ class AuthController extends Controller
 
         $accessToken = auth()->user()->createToken('authToken')->accessToken;
 
+        $user = User::where('id', auth()->id())->with('roles')->first();
+
+        $role = $user->roles->first();
+
         return response()->json(
         [
             'message' => 'login successful',
-            'access_token' => $accessToken,
+            'accessToken' => $accessToken,
+            'user' => $user,
+            'role' => $role->name,
             'code' => 200
         ]);
     }
